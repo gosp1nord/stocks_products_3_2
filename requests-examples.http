@@ -1,0 +1,82 @@
+# примеры API-запросов
+
+# создание продукта
+POST http://localhost:8000/api/v1/products/
+Content-Type: application/json
+
+{
+  "title": "Кабачки",
+  "description": "Толстые"
+}
+
+###
+
+# получение продуктов
+GET http://localhost:8000/api/v1/products/?page=2
+Content-Type: application/json
+
+###
+
+# обновление продукта
+PATCH http://localhost:8000/api/v1/products/1/
+Content-Type: application/json
+
+{
+  "description": "Самые сочные и ароматные помидорки"
+}
+
+###
+
+# удаление продукта
+DELETE http://localhost:8000/api/v1/products/3/
+Content-Type: application/json
+
+###
+
+# поиск продуктов по названию и описанию
+GET http://localhost:8000/api/v1/products/?q=помидо
+Content-Type: application/json
+
+###
+
+# создание склада
+POST http://localhost:8000/api/v1/stocks/
+Content-Type: application/json
+
+{
+  "address": "Склад 3",
+  "positions": [
+    {
+      "product": 1,
+      "quantity": 250,
+      "price": 120.50
+    },
+    {
+      "product": 2,
+      "quantity": 600,
+      "price": 680
+    }
+  ]
+}
+
+###
+
+# обновляем записи на складе
+PATCH http://localhost:8000/api/v1/stocks/3/
+Content-Type: application/json
+
+{
+  "positions": [
+    {
+      "product": 1,
+      "quantity": 50,
+      "price": 200.00
+    }
+  ]
+}
+
+###
+
+# поиск складов, где есть определенный продукт
+GET http://localhost:8000/api/v1/stocks/?products=1
+Content-Type: application/json
